@@ -1,0 +1,182 @@
+\documentclass{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsmath, amssymb, mathrsfs}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+
+\title{Foundations of Computer Science HW 1}
+\author{Greg Stewart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Q1}
+
+(c) $A = \{x \mid x^2 = 6 : x \in \mathbb{Z} \}$ $$A = \{-3, 3\}$$
+
+\noindent (d) $A = \{x \mid x = x^2-1 : x \in \mathbb{R} \}$ $$A = \Big\{ \frac{1 - \sqrt{5}}{2}, \frac{1+\sqrt{5}}{2} \Big\} $$
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q2}
+
+(c) $C = \{1, 2, 4, 7, 11, 16, 22, \dots \}$ $$C = \big\{x \mid x = \frac{n(n-1)}{2} + 1 : n \in \mathbb{N}\big\}$$
+
+\noindent (d) $D = \{ \dots , \frac{1}{8}, \frac{1}{4}, \frac{1}{2}, 1, 2, 4, 8, \dots \}$ $$D = \{ x \mid x = 2^n : n \in \mathbb{Z} \}$$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q3}
+
+$B = \{\{a,b\}, a, b, c\}$. What is the power set $\mathscr{P}(B)$
+
+\begin{align*}
+\mathscr{P} = &\Big\{ \{\}, \{a\}, \{b\}, \{c\}, \big\{a,b\}\big\}, \{a, b\}, \{a,c\}, \big\{a,\{a,b\}\big\}, \{b,c\}, \big\{b, \{a,b\}\big\},  \\
+&\big\{c, \{a,b\}\big\}, \{a,b,c\}, \big\{a, b, \{a,b\}\big\}, \big\{a, c, \{a,b\}\big\}, \big\{b, c, \{a,b\}\big\}, \big\{a,b,c,\{a,b\}\big\}\Big\}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q4}
+
+\textit{Problem.} List all subsets of $\{a, b, c, d\}$ that contain $c$ but not $d$.
+
+The subsets are:
+
+$$\{c\}, \{a, c\}, \{b, c\}, \{a, b, c\}$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q5}
+
+$|A| = 7 \text{ and } |B| = 4$. 
+
+\smallskip
+
+$0 \leq |A \cap B| \leq 4$ because it is possible that none of the elements of $A$ and $B$ are the same, and as many 
+
+as all 4 elements of $B$ could also be in $A$.
+
+\smallskip
+
+$7 \leq |A \cup B| \leq 11$ because in the case where all 4 elements of $B$ are in $A$, the union of the sets is just $A$. 
+
+However, as many as 4 new elements from $B$ could be added to $A$ to form the union, if they do not 
+
+already exist in $A$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q6}
+
+\textbf{Fact.} $\sqrt{3}$ is irrational.
+
+\smallskip
+
+\noindent \textbf{Proof.}
+
+Let's assume that $\sqrt{3}$ is rational. Then we can write $$\sqrt{3} = \Big\{ \frac{a_1}{b_1}, \frac{a_2}{b_2}, \frac{a_3}{b_3}, \cdots \Big\}$$
+
+where $a_i, b_i \in \mathbb{N}.$ We use the well ordering principle to assert that there is a minimum $b_i$, which we will 
+
+call $b$. There is of course an $a_i$ corresponding to $b$, and which we will call $a$. Since $b$ is the minimum 
+
+possible value for the denominator, it is true that $a$ and $b$ have no common factor. So let's write our 
+
+expression for $\sqrt{3}$ and solve for $a$.
+
+\begin{align*}
+\sqrt{3} &= \frac{a}{b} \\
+a^2 &= 3b^2
+\end{align*}
+
+We don't actually have to solve all the way. What we can see here is that either both $a$ and $b$ are odd, 
+
+or they are both even. Let's say they're both odd. Then
+
+\begin{align*}
+a &= 2n + 1 \\
+b &= 2m + 1 \\
+\end{align*}
+
+where $n, m \in \mathbb{N}$. Substituting this into our previous expression, we have
+
+\begin{align*}
+(2n+1)^2 &= 3(2m+1)^2 \\
+4n^2 + 4n + 1 &= 3(4m^2 + 4m + 1) \\
+2n^2 + 2n &= 6m^2 + 6m + 1 \\
+2(n^2 + n) &= 2(3m^2 + 3m) +1
+\end{align*}
+
+Now we can see that the LHS of the expression is even since it is a multiple of 2, and the RHS is odd. 
+
+They must not be the same, so we have a contradiction. Therefore, there are no values of $a$ and $b$ which 
+
+give $\sqrt{3}$,  so $\sqrt{3}$ \textbf{is irrational}.
+
+
+\bigskip
+
+\noindent\textit{Problem.} Try to prove that $\sqrt{9}$ is irrational this way.
+
+Assume that $\sqrt{9}$ is rational. As before, $$\sqrt{9} = \Big\{ \frac{a_1}{b_1}, \frac{a_2}{b_2}, \frac{a_3}{b_3}, \cdots \Big\}$$
+
+is the set of possible representations, with $a_i, b_i \in \mathbb{N}.$ There is a minimum $b_i$ called $b$ and 
+
+corresponding $a$. These have no common factor. We can again look at solutions for $a$.
+
+\begin{align*}
+\sqrt{9} &= \frac{a}{b} \\ 
+a^2 &= 9b^2
+\end{align*}
+
+Again we can use the facts from the previous proof to expand both sides of the expression.
+
+\begin{align*}
+(2n+1)^2 &= 9(2m+1)^2 \\
+4n^2 + 4n + 1 &= 9(4m^2 + 4m + 1) \\ %36mm + 36m + 9
+2n^2 + 2n &= 18m^2 + 18m + 4 \\
+2(n^2 + n) &= 2(9m^2 + 9m + 2)
+\end{align*}
+
+But this time, both the LHS and RHS are even, and nothing about our restrictions for a and b are 
+
+violated. Since there is no contradiction here, we cannot conclude that $\sqrt{9}$ is irrational.
+
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Q7}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c c c | c}
+$p$ & $q$ & $r$ & $\neg(p \wedge r) \wedge q$ \\
+\hline 
+T & T & T & F\\ 
+T & T & F & T\\
+T & F & T & F\\
+T & F & F & F\\
+F & T & T & T\\
+F & T & F & T\\
+F & F & T & F\\
+F & F & F & F
+\end{tabular}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\end{document}

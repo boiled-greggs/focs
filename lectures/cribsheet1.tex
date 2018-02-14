@@ -1,0 +1,199 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{amssymb, amsmath, amsfonts, amsthm}
+\usepackage{wasysym}
+\usepackage{multicol}
+
+\pagestyle{empty}
+
+\setlength{\parindent}{0cm}
+
+\topmargin -1.25in
+\oddsidemargin -.7in
+\textwidth 8in
+\textheight 720pt
+
+\DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+\DeclareMathSymbol{\N}{\mathbin}{AMSb}{"4E}
+\DeclareMathSymbol{\Z}{\mathbin}{AMSb}{"5A}
+\DeclareMathSymbol{\R}{\mathbin}{AMSb}{"52}
+\DeclareMathSymbol{\Q}{\mathbin}{AMSb}{"51}
+\DeclareMathSymbol{\I}{\mathbin}{AMSb}{"49}
+\DeclareMathSymbol{\C}{\mathbin}{AMSb}{"43}
+
+\renewcommand{\labelenumiii}{\arabic{enumiii}.}
+
+\begin{document}
+
+\begin{center}
+  Quiz 1 Crib Sheet
+\end{center}
+
+\begin{multicols}{2}
+
+Chapter 2\\
+\textbf{Sets}\\
+- order \& repeated elements dont matter\\
+- $\Q = \{ r | r = \frac{a}{b}; a \in \Z, b \in \N \}$ \\
+- $\Z = \{ 0, \pm 1,... \}$\\
+- $A \subseteq B \rightarrow$ every element of $A$ is in $B$ \\
+- $A \subset B \rightarrow$ every element of $A$ is in $B$ and at least 1 element of $B$ is not in $A$ \\
+- $A = B \rightarrow$ $A \subseteq B \ and \ B \subseteq A$\\
+- \textbf{Power Set:} all subsets of a set $A = \{ a,b \}$;
+$\mathcal{P}(A) = \{\emptyset, \{ a \}, \{ b \}, \{ a, b \} \}$\\
+- $A \cap B \rightarrow$ elements in both $A$ and $B$ \\
+- $A \cup B \rightarrow$ elements from combining $A$ with $B$ \\
+- $\overline{A} \rightarrow$ all elements not in $A$ \\
+\fbox{\begin{minipage}{23em}
+\textbf{Combining Set Operations}
+  \begin{enumerate}
+    \item Associative: $(A \cap B) \cap C = A \cap (B \cap C)$ \\
+    \null \ \ \quad \qquad \qquad $(A \cup B) \cup C = A \cup (B \cup C)$
+    \item Commuatative: $A \cap B = B \cap A$ \\
+    \null \qquad \qquad \quad \qquad $A \cup B = B \cup A$
+    \item Complements: $\overline{(\overline{A})} = A$ \\
+    \null \qquad \qquad \ \ \qquad $\overline{A \cap B} = \overline{A} \cup \overline{B}$ \\
+    \null \qquad \qquad \ \ \qquad $\overline{A \cup B} = \overline{A} \cap \overline{B}$
+    \item Distributive: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ \\
+    \null \qquad \qquad \qquad $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$
+  \end{enumerate}
+\end{minipage}}
+\textbf{Sequences} \\
+- order \& repitition is important \\
+\textbf{Graphs} \\
+- capture relationships between objects \\
+- set of vertices \\
+- affiliation \& conflict graphs \\
+\textbf{Axiom:} self-evident statment that is asserted as true without proof \\
+\textbf{Conjecture:} claim that is believed true but is not true until proven \\
+\textbf{Theorem:} proven truth \\
+The Well-Ordering Principle: Any non-empty subset of $\N$ has a minimum element. \\
+\rule[0.5ex]{\linewidth}{1pt}
+
+Chapter 3
+
+\fbox{\begin{minipage}{15.5em}
+  \textbf{Truth Table:} \\
+  %not p, p or q, p and q, p implies q
+  \begin{tabular}{cc|c|c|c|c}
+    p & q & $\neg p$ & $p \lor q$ & $p \land q$ & $p \rightarrow q$ \\
+    \hline
+    T & T & F & T & T & T \\
+    T & F & F & T & F & F \\
+    F & T & T & T & F & T \\
+    F & F & T & F & F & T
+  \end{tabular}
+\end{minipage}}
+
+  \fbox{\begin{minipage}{20em}
+  \textbf{Logical Connectors Manipulation}
+    \begin{enumerate}
+      \item Associative:
+      $(p \land q) \land r \equiv p \land (q \land r)$ \\
+      \null \qquad\qquad\quad\ \  $(p \lor q) \lor r \equiv p \lor (q \lor r)$
+      \item Commutative:
+      $p \land q \equiv q \land p$ \\
+      \null \qquad\qquad\qquad\ \ $p \lor q \equiv q \lor p$
+      \item Negations:
+      $\neg(\neg p) \equiv p$ \\
+      \null \qquad\quad\qquad $\neg(p \land q) \equiv \neg p \lor \neg q$ \\
+      \null \qquad\quad\qquad $\neg(p \lor q) \equiv \neg p \land \neg q$
+      \item Distributive:
+      $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ \\
+      \null \qquad\qquad\qquad $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+      \item Implication:
+      $p \rightarrow q \equiv \neg q \rightarrow \neg p$ \\
+      \null \ \ \qquad\quad\qquad $p \rightarrow q \equiv \neg p \land q$
+
+    \end{enumerate}
+  \end{minipage}}
+
+\textbf{Predicates}
+
+\textit{Example 1}: All cars have four wheels \\
+\null \quad Predicate: $P(c) =$ ``car $c$ has four wheels'' \\
+\null \quad Domain: $C = \{ c | c$ is a car $\}$ \\
+\null \quad ``for all $c$ in $C$, the statement $P(c)$ is true.'' = $\forall c \in C : P(c)$
+
+\textit{Example 2}: There exists a creature with blue eyes and blonde hair \\
+\null \quad Predicate 1: $G(a) =$ ``$a$ has blue eyes'' \\
+\null \quad Predicate 2: $H(a) =$ ``$a$ has blonde hair'' \\
+\null \quad Domain: $A = \{ a | a$ is a creature$\}$ \\
+\null \quad ``there exists $a$ in $A$ for which the statement $G(a)$ and $H(a)$ are true.'' = $\exists a \in A : (G(a) \land H(a))$
+
+- $\exists$ claims need just one case to prove it is true \\
+- $\forall$ claims need just one contradiction to be false
+
+\fbox{\begin{minipage}{20em}
+  \begin{center}
+    $\neg (\forall x : P(x)) \equiv \exists x : \neg P(x)$ \\
+    $\neg (\exists x : P(x)) \equiv \forall x : \neg P(x)$
+  \end{center}
+\end{minipage}} \\
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+Chapter 4: Proofs
+
+\textbf{Direct Proof}: $p \rightarrow q$ \\
+\null \quad Assume $p$ is \textsc{t}. Argue $q$ must be \textsc{t}.
+
+\textbf{Proving $\forall x \in \mathcal{D} : P(x)$ using general $x$}:\\
+\null \quad Assume $x \in \mathcal{D}$. \\
+\null \quad Determine properties $x$ must have for $x \in \mathcal{D}$ \\
+\null \quad Show $P(x)$ is \textsc{t} for $x$, then claim must be true.
+
+\textbf{Contraposition}: $p \rightarrow q$ \\
+\null \quad Assume $q$ is \textsc{f}. Argue $p$ must be \textsc{f}. \\
+\null \quad A direct proof of the contraposition ($\neg q \rightarrow \neg p$)
+
+\textbf{Contradiction}: $p$ is \textsc{t} \\
+\null \quad Assume $p$ is \textsc{f}. \\
+\null \quad Derive \textbf{FISHY} statement. Means $p$ is \textsc{t}.
+
+\textbf{Contradiction}: $p \rightarrow q$ \\
+\null \quad Assume $p$ is \textsc{t} \& show $q$ is \textsc{f}. \\
+\null \quad Assume $q$ is \textsc{f}. \\
+\null \quad Derive \textbf{FISHY} statement \\
+\null \quad Either $p$ is \textsc{f} or $q$ is \textsc{t}.
+  So $p \rightarrow q$ is \textsc{t}.
+
+\textbf{Equivalence}: $p \iff q$ \\
+\null \quad Prove $p \rightarrow q$. \\
+\null \quad Prove $q \rightarrow p$.
+
+\textbf{Set Proofs}: \textit{(Formal Proof)} Show: \\
+\null \quad $A \subseteq B : x \in A \rightarrow x \in B$ \\
+\null \quad $A \nsubseteq B : \exists x \in A : x \notin B$ \\
+\null \quad $A = B : A \subseteq B \ \& \ B \subseteq A$
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+Chapter 5: Induction
+
+\textbf{Induction Proof}: $\forall n \geq 1 : P(n)$ \\
+  Base Case: Show $P(1)$ is \textsc{t}. \\
+  Induction Step: Show $P(n) \rightarrow P(n + 1)$ for $n \geq 1$. \\
+  \null \quad Use Direct Proof or Contraposition: \\
+  \null \qquad Direct: Assume $P(n)$ : \textsc{t}. Show $P(n + 1)$ : \textsc{t}. \\
+  \null \qquad Contra: Assume $P(n + 1)$ : \textsc{f}. Show $P(n)$ : \textsc{f}.
+
+$\sum_{i=1}^{n+1}i = \sum_{i=1}^{n}i + (n + 1)$ \\
+Just plug whatever is on top ($n + 1$) into $i$
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+Chapter 6: Strong Induction
+
+\textbf{Strong Induction}: To prove $P(n) \forall n \geq 1$, use induction to prove
+a stronger claim: \\
+\null \quad $Q(n) : \ \text{each of}\ P(1), P(2),..., P(n) \text{ are \textsc{t} }$
+
+\textbf{Leaping Induction}: Prove $\forall n \geq 1 : P(n)$ \\
+\null \quad Show $P(1),...,P(k)$ base cases are \textsc{t}. \\
+\null \quad Show $P(n) \rightarrow P(k)$ for $n \geq 1$ \\
+\null \quad Then $\forall n \geq 1 : P(n)$
+\end{multicols}
+
+\end{document}
