@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 \usepackage{tikz}
-
+\usepackage{graphicx}
 
 
 \begin{document}
@@ -489,14 +489,43 @@ Player 2 can always return the game ot smaller equal piles. If player 2 wins the
 
 Recursive functions must have some base case, and a recursive progression that leads to the base case.p
 
+\newpage
 
+\section*{TREES}
 
+\includegraphics[width=\textwidth]{baby-animals-tree-trunk-bears-cubs-brown-cutest-zoo-1920x1080.jpg}
 
+\subsection*{Exercise 7.12 \normalsize Give recursive definition}
 
+\textbf{(a) } $S = \{3^0, 3^1, 3^2, \dots\}$
 
+$$1 \in \mathbb{S}$$
+$$x \in \mathbb{S} \rightarrow 3\cdot x \in \mathbb{S}$$
 
+\textbf{(b) } $S = \{$all binary strings that are palindromes$\}$
 
+$$\{\},0,1 \in S$$
+$$x \in S \implies 0x0 \in S \wedge x \in S \implies 1x1 \in S$$
 
+\textbf{(c) } $S = \{$all strings of matched parentheses$\}$ 
+
+$$\{\} \in S$$ $$x,y \in S \implies [x]y \in S$$
+
+\subsection*{Rooted Binary Tree}
+
+\textbf{Definition.}
+
+The empty tree $\epsilon$ is an RBT
+
+If $T_1, T_2$ are disjoint RBTs with roots $r_1$ and $r_2$, then linking $r_1$ and $r_2$ to a \textit{new} RBT with root $r$
+
+\subsection*{Structural Induction}
+
+\begin{itemize}
+  \item Base Cases are True
+  \item For every constructor rule, show: if P is T for the known parents, THen P is T for children
+  \item By structural induction, conclude that P(s) is T for all s in S
+\end{itemize}
 
 
 
