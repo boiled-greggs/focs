@@ -559,6 +559,94 @@ If $T_1, T_2$ are disjoint RBTs with roots $r_1$ and $r_2$, then linking $r_1$ a
 
 
 
+\newpage
+
+\section*{Number Theory Stuff.}
+
+\subsection*{Some Basics}
+
+\subsection*{GCD}
+
+Euclid's algorithm
+
+\subsection*{Bezout's Identity}
+
+\textbf{Theorem.} $\gcd(m,n)$ is the smallest positive integer linear combiantion of $m$ and $n$:
+
+$$\gcd(m,n) = mx + ny \qquad \text{for } x,y \in \mathbb{Z}$$
+
+\subsection*{Crazy Facts about the GCD}
+
+\begin{enumerate}[(i)]
+  \item $\gcd(m,n) = \gcd(m,\text{rem}(n,m))$
+  \item Every common divisor of $m, n$ divides $\gcd(m,n)$
+  \item For $k \in \mathbb{N}$, $\gcd(km, kn) = k\cdot \gcd(m,n)$
+  \item If $\gcd(l,m) = 1$ and $\gcd(l,n) = 1$, then $\gcd(l,mn) = 1$
+  \item If $d \mid mn$ and $\gcd(d,m) = 1$, then $d \mid n$
+\end{enumerate}
+
+
+\bigskip
+
+\begin{align*}
+  5^2 &\equiv 1 \mod 3 \\
+  (5^2)^{1007} &\equiv 1 \mod 3 \\
+  5 \cdot (5^2)^{1007} &\equiv 5 \equiv 2 \mod 3
+\end{align*}
+
+\subsection*{Modular Division things}
+
+Suppose $ac \equiv bc \mod d$. Then $a \equiv b \mod d$ if $\gcd(c,d) = 1$.
+
+
+
+
+
+
+
+\section*{GRAPHS}
+
+\begin{tikzpicture}
+  [scale=.8,auto=left,every node/.style={circle}] %,fill=blue!20}]
+  \node[draw, circle] (n1) at (3,8) {1};
+  \node[draw, circle] (n2) at (1.25,7)  {2};
+  \node[draw, circle] (n3) at (2,5)  {3};
+  \node[draw, circle] (n4) at (4,5) {4};
+  \node[draw, circle] (n5) at (4.75,7)  {5};
+  \node[draw, circle] (n6) at (7,8)  {6};
+  \node[draw, circle] (n7) at (7,5)  {7};
+
+  \foreach \from/\to in {n1/n2,n1/n5,n5/n1,n1/n2,n2/n5,n2/n3,n3/n4, n4/n5, n3/n5, n6/n7}
+    \draw (\from) -- (\to);
+
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section*{COUNTING}
+
+This is what discrete math is all about.
+
+  Say you have three kinds of things and you organize them into groups of three. how many possible groups? There are 10.
+  But what happens when you scale up? gets a lot harder.
+
+\textbf{Sum Rule.} $N$ objects of two types: $N_1$ of type 1 and $N_2$ of type 2. Then $N = N_1 + N_2$.
+
+$$|\{A_1 A_2 \dots A_n \}| = |A_1||A_2|\cdots|A_n|$$
+
+Example: 10 runners; how many possible top 3 finishes? $|\{FST\}| = 10 \times 9 \times 8 = 720$
+
+
+
+
 
 
 
