@@ -1,0 +1,213 @@
+\documentclass{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsmath, amssymb, mathrsfs}
+\usepackage{mathtools}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{ wasysym }
+\usetikzlibrary{shapes,backgrounds}
+\DeclarePairedDelimiter\Floor\lfloor\rfloor
+\DeclarePairedDelimiter\Ceil\lceil\rceil
+
+\title{Foundations of Computer Science HW 6}
+\author{Greg Stewart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Q1. 9.47}
+
+\textit{A postage dispenser has 4\cent and 7\cent stamps. A customer will input $n$, the desired postage, and the machine should (a) Determine if postage $n$ can be dispends, and (b) if it can, give a way to dispense the postage: numbers $n_4$ and $n_7$ for which $n = 4n_4 + 7n_7$. Give an algorithm to solve in $O(1)$ compute time.}
+
+\begin{verbatim}
+  function compute_postage(n):
+    input: n is the postage desired
+    output: n_4 and n_7, if the postage can be dispensed.
+
+    n_4 = n_7 = 0
+    for i = 0..6:
+      tmp = n - 4*i
+      if tmp % 7 = 0:
+        n_4 = i
+        n_7 = tmp/7
+
+    return n_4, n_7
+\end{verbatim}
+
+The reason this works is because in any postage that can be computed using just these two stamps, the value of $n_4$ must always be in the range $[0,6]$. Thus, checking if the remaining postage after subtracting a multiple of 4 is divisible by 7 allows finding whether it's possible. The number of 7 \cent stamps is also maximized because the algorithm starts with lowest multiples of 4. No matter the value of $n$, this algorithm is always in the worst case about $O(60) = O(1)$, and returns 0 for both values if no solution is available. So it's linear time.
+
+
+
+\section*{Q2. 10.18(c)}
+
+\textit{The least common multiple lcm$(m,n)$ is the smallest positive integer that is divisible by both $m$ and $n$. Assum $m,n > 0$.}
+
+\begin{enumerate}[(a)]\setcounter{enumi}{2}
+  \item \textit{Prove that lcm$(m,n) \times \gcd(m,n) = mn$}
+    \begin{enumerate}[(i)]
+      \item Let $m = k \times \gcd(m,n)$ and $n = k'\times\gcd(m,n)$. Prove that lcm$(m,n) \leq kk'\gcd(m,n)$.
+        
+        Note that $k = \frac{m}{\gcd(m,n)}$ and $k' = \frac{n}{\gcd(m,n)}$, so
+
+        $$kk'\gcd(m,n) = \frac{mn}{(\gcd(m,n))^2}\gcd(m,n) = \frac{mn}{\gcd(m,n)}$$
+
+        As can be seen from the result of this expression, the right hand side of the inequality is a multiple of both $m$ and $n$:
+
+        $$\frac{mn}{\gcd(m,n)} = m\cdot\frac{n}{\gcd(m,n)} = n\cdot\frac{m}{\gcd(m,n)}$$
+
+        This means that the right hand side must either be the least common multiple of $m$ and $n$, or some other greater multiple of $m$ and $n$, proving the expression.
+      \item Prove $mn \mid \text{lcm}(m,n)\gcd(m,n)$, hence lcm$(m,n)\gcd(m,n) \geq mn$.
+
+        By definition we know that $m \mid \text{lcm}(m,n)$ and $n \mid \text{lcm}(m,n)$, and therefore we also have that $m,n \mid \text{lcm}(m,n) \cdot k$, where $k$ is some integer. Thus $mn \mid \text{lcm}(m,n)$, which means we can also write that $mn \mid \text{lcm}(m,n)\gcd(m,n)$, and therefore
+
+        $$mn \leq \text{lcm}(m,n)\gcd(m,n)$$
+      \item Use (i) and (ii) to prove that lcm$(m,n) = kk'\gcd(m,n)$ and lcm$(m,n) \times \gcd(m,n) = mn$.
+
+        Since we have $mn \leq \text{lcm}(m,n)\gcd(m,n)$, we can write $\text{lcm}(m,n) \geq kk'\gcd(m,n)$, and since we already know $\text{lcm}(m,n) \leq kk'\gcd(m,n)$, we must have 
+
+        $$\text{lcm}(m,n) = kk' \gcd(m,n)$$
+
+        Now, the result from (i) gives, upon solving for $mn$, $mn \geq \text{lcm}(m,n) \gcd(m,n)$. Combining this with the result from (ii) we must have
+
+        $$mn = \text{lcm}(m,n)\gcd(m,n)$$
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\section*{Q3. 11.17(c)-(d)}
+
+\textit{Show the following facts of any graph with $n$ vertices:}
+
+\begin{enumerate}[(a)]\setcounter{enumi}{2}
+    \item If every vertex has degree at least $\delta \geq 2$, there is a cycle of length at least $\delta + 1$.
+
+      Start at a vertex in the longest path of such a graph, and follow it to the endpoint of the path, which must be a vertex $v$. Since $v$ is the endpoint and the path is the longest in the graph, every vertex with which $v$ shares an edge must be in the path. And since $v$ is of at least degree 2, it must have an edge connecting it to some other vertex in the path, which forms a cycle. If it's degree is 2, for example, the smallest possible length for the cycle is 3, and if $\delta = 3$, then the vertex $v$ has two additional edges to consider, which must lead to a cycle of at least $4$, and so on. Thus any graph in which every vertex has a degree of $\delta \geq 2$ must have a cycle of length at least $\delta + 1$
+    \item If every vertex has degree at least $n/2$, the graph is connected.
+
+      Suppose that the graph in question is not connected, and in fact is split into two connected parts, $g_1$ and $g_2$. Since every vertex has degree $n/2$ (at least) then there must be at least $n/2 + 1$ vertices in both $g_1$ and $g_2$; i.e., if $V_1$ and $V_2$ are the vertices in their respective graphs, then
+
+      $$|V_1|, |V_2| \geq \frac{n}{2} + 1.$$
+
+      So the total number of nodes $|V|$ in the graph is just the sum of these:
+
+      $$|V| = |V_1| + |V_2| \geq 2(\frac{n}{2} + 1) = n + 2$$
+
+      But the graph only contains $n$ nodes! We have reached a contradiction; therefore the graph must be connected.
+\end{enumerate}
+
+
+
+
+
+\section*{Q4. 11.37}
+
+\textit{Similar to a cut-vertex, an edge $e$ is a cut-edge in $G$ if the removal of $e$ disconnects $G$. Prove that $e$ is a cut-edge if and only if it is not on any cycle of $G$.}
+
+Let $e$ be a cut edge in the graph $G$ which is connecting two vertices, $u$ and $v$. If $e$ was in a cycle of $G$, then upon removal of $e$, there would by definition be another path connecting $u$ and $v$, so $e$ would not be a cut-edge. Therefore if $e$ is a cut-edge it must not be in a cycle of $G$.
+
+Say that there is an edge $e$ which is not contained within a cycle in a graph $G$, and that $e$ connected two vertices $u$ and $v$. Then since $e$ is not contained within a cycle, once it is removed, there is no path from $u$ to $v$, and the graph becomes disconnected. Thus $e$ is a cut-edge in $G$.
+
+
+
+\section*{Q5. 12.13}
+
+\textit{The $n$ jobs $J_1, \dots, J_n$ must be performed on $m$ servers $S_1, \dots, S_m$. Each server $S_i$ has the capacity to do $l_i \geq 0$ jobs. Each job can be done on some subset of the server. Give necessary and sufficient conditions for being able to do all the jobs.}
+
+Since each server can do $l_i$ jobs, the total number of jobs which can be performed is
+
+$$S_1l_1 + S_2l_2 + \cdots + S_ml_m = \sum_{i=1}^{m} S_il_i$$
+
+And as we have a total number of jobs $n$, in order to do all of them we must have
+
+$$n \leq \sum_{i=1}^{m} S_il_i$$
+
+This is the only condition which must be satisfied, since each job can be done on a subset of the server.
+
+
+
+\section*{Q6. 12.54}
+
+\textit{For a graph $G$ with $n$ vertices, $\alpha(G)$ is the maximum size of an independent set and $\chi(G)$ is the minimum number of colors needed to color $G$. Prove $\chi(G) \geq n/\alpha(G)$.}
+
+Assume that for a graph $G$ we have $\chi(G) = c$, so $c$ is the number of colors needed to color $G$. Let there be sets of vertices for each color, $V_i$, such that $i = 1,2,\dots, c$. Each $V_i$ is an independent set of vertices in $G$, so $|V_i| \leq \alpha(G)$ for all $i$. The full number of vertices in $G$ is $n$, and $n = |V|$, and we can write this
+
+\begin{align*}
+  n &= \sum_{i=1}^{c} |V_i| \\
+  &\leq \sum_{i=1}^{c} \alpha(G) = c\cdot\alpha(G) \\
+  \leq \chi(G)\alpha(G)
+\end{align*}
+
+So we have that $n \leq \chi(G)\alpha(G)$, which we can write as 
+
+$$\chi(G) \geq \frac{n}{\alpha(G)}$$
+
+Which is exactly what we wanted.
+
+
+
+
+
+\section*{Q7. 13.21}
+
+\textit{US dollar bills have 8-digit serial numbers; a bill is defective if a digit repeats. What fraction of bills is defective?}
+
+There are $10^8$ total possible serial numbers. If digits are not allowed to repeat in the serial number, then the number of possible digits reduces by 1 each time a digit is added to the serial number. Thus the number of legal serial numbers is 
+
+  $$10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3 = \frac{10!}{2!} = 1,814,400$$
+
+  Which leaves the number of illegal serial numbers to be the total possibilities minus the number of legal SNs:
+
+  $$10^8 - 1,814,400 = 98,185,600$$
+
+
+
+
+\section*{Q8. 13.22(b)-(c)}
+
+\textit{A US SSN has 9 digits. The first digit may be zero.}
+
+\begin{enumerate}[(a)]\setcounter{enumi}{2}
+    \item How many are palindromes?
+
+      Since an SSN has 9 digits, the 5th digit (the middle) doesn't matter. This means we just need the first four digits to match the last four digits in reverse; i.e., if the digits are $d_1, \dots, d_9$, then $d_1 = d_9$, $d_2 = d_8$, $d_3 = d_7$< and $d_4 = d_6$, making the SSN
+
+      $$d_1 d_2 d_3 d_4 d_5 d_4 d_3 d_2 d_1$$
+
+      Five digits can vary, so the total number of possible palindromes is $10^5$.
+    \item How many have no 8? How many have at least one 8? How many have exactly one 8?
+
+      \textbf{No 8.} We just remove 8 as a possibility when counting, leaving only 9 possible digits, so we have $9^9 = 387,420,489$.
+
+      \textbf{$\geq$ one 8.} This is all the possible combinations except for those in the previous answer: $10^9 - 9^9 = 612,579,511$.
+
+      \textbf{Exactly one 8.} Any digit, but only one, is held to be 8, so it is removed from counting, and the other eight digits must be chosen from the remaining nine possibilities, so we have: $8 \cdot 9^8 = 344,373,768$.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
