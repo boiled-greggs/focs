@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{amsmath, amssymb, mathrsfs}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usetikzlibrary{shapes,backgrounds}
+\DeclarePairedDelimiter\Floor\lfloor\rfloor
+\DeclarePairedDelimiter\Ceil\lceil\rceil
+
+\title{Foundations of Computer Science HW 8}
+\author{Greg Stewart}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{22.14(a)-(c)  \normalsize Answer True or False}
+
+\begin{enumerate}[(a)]
+  \item \textit{A bijection must be an injection.}
+
+    True
+  \item \textit{There is a bijection from $\mathbb{Q}$ to $\mathbb{R}$}
+
+    False
+  \item \textit{There is a bijection from $\mathbb{Q}$ to $\mathbb{Z}$}
+
+    True
+\end{enumerate}
+
+
+
+
+
+\section*{22.18(a)-(c)  \normalsize Prove or Disprove}
+
+\begin{enumerate}[(a)]
+  \item \textit{$\mathbb{Z}^2$ is the set of pairs $\{(z_1, z_2) \mid z_1,z_2 \in \mathbb{Z}\}$. $\mathbb{Z}^2$ is countable.}
+  \item \textit{$\mathbb{Q}$ is the set of rational numbers, $\mathbb{Q} = \{r \mid r=\frac{a}{b}, a\in \mathbb{Z}, \text{ and } b \in \mathbb{N}\}$. $\mathbb{Q}$ is countable.}
+  \item \textit{$F$ is the set of all functions from $\mathbb{N} \text{ to } \mathbb{N}, F = \{f \mid f : \mathbb{N} \rightarrow \mathbb{N}\}$. $F$ is countable.}
+\end{enumerate}
+
+
+
+
+
+\section*{24.5(d)-(f)  \normalsize Give DFA's for the following}
+
+\begin{enumerate}[(a)]\setcounter{enumi}{3}
+  \item \textit{The strings which begin with 10 and end with 01.}
+  \item \textit{$\mathscr{L} = \{01^{\bullet n} \mid n \geq 0\}$}
+  \item \textit{The language with all strings whose length is divisible by 3.}
+\end{enumerate}
+
+
+
+
+
+\section*{25.4(a)-(c)  \normalsize Give a DFA and a CFG for the following}
+
+\begin{enumerate}[(a)]
+  \item \textit{$\mathscr{L} = \{01^{\bullet n} \mid n \geq 0\}$}
+  \item \textit{$\mathscr{L} = \{0^{\bullet n}1^{\bullet n} \mid 0 \leq n \leq 5\}$}
+  \item \textit{$\mathscr{L} = \{\text{strings which end in a 1}\}$}
+\end{enumerate}
+
+
+
+
+
+\section*{25.15(a)-(c)  \normalsize Consider the language $\mathscr{L} = \{\epsilon,1,11,111,\dots\}=\{1\}*$}
+
+\begin{enumerate}[(a)]
+  \item \textit{Show that the CFG $S \rightarrow \epsilon \mid 1 \mid 1S$ generates $\mathscr{L}$. Give a derivation of 111.}
+  \item \textit{Show that the CFG $S \rightarrow \epsilon \mid 1 \mid SS$ generates $\mathscr{L}$. Give two different derivations of 111.}
+  \item \textit{A leftmost (rightmost) derivation replaces the leftmost (rightmost) variable at every step. For the grammar in (b), give left and rightmost derivations of 111.}
+\end{enumerate}
+
+
+
+
+
+\section*{25.16(a)-(c)  \normalsize Given the CFG $S \rightarrow A1B; A \rightarrow \epsilon \mid 0A; B \rightarrow \epsilon \mid 0B \mid 1B$, Give leftmost and rightmost derivations, and parse trees, of}
+
+\begin{enumerate}[(a)]
+  \item \textit{00101}
+  \item \textit{1001}
+  \item \textit{00011}
+\end{enumerate}
+
+
+
+
+
+\section*{26.4(a)-(b)  \normalsize Give high-level pseudocode for Turing Machines that solve these problems. In some cases you are asked for a decider. In others, you are asked for a transducer.}
+
+\begin{enumerate}[(a)]
+  \item \textit{Regular languages: $\mathscr{L}_1 = \{*01*\} \text{ and } \mathscr{L}_2 = \{*01\}$}
+  \item \textit{Not CFL: $\mathscr{L} = \{0^{\bullet n}\#1^{\bullet n}\#0^{\bullet n}\}$ where \# is a punctuation symbol.}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}k
